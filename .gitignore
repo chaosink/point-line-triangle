@@ -26,7 +26,7 @@
 *.exe
 *.out
 *.app
-point-line
+point-line-triangle
 
 # WAV file
 test.wav
