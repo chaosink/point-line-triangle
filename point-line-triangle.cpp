@@ -368,7 +368,7 @@ if(input) {
 		float dist;
 		for(int i = 0; i < particle_num; i++)
 			for(int j = i + 1; j < particle_num; j++)
-				if((dist = glm::distance(glm::vec2(particles[i].pos.x * 1024 / 768, particles[i].pos.y), glm::vec2(particles[j].pos.x * 1024 / 768, particles[j].pos.y))) <= max_dist_pp) {
+				if((dist = glm::distance(glm::vec2(particles[i].pos.x * window_width / window_height, particles[i].pos.y), glm::vec2(particles[j].pos.x * window_width / window_height, particles[j].pos.y))) <= max_dist_pp) {
 					g_vertex_buffer_data[vertex_num][0] = particles[i].pos.x;
 					g_vertex_buffer_data[vertex_num][1] = particles[i].pos.y;
 					g_color_buffer_data[vertex_num][0] = particles[i].color.r;
@@ -412,7 +412,7 @@ if(input) {
 
 /*		for(int i = 0; i < particle_num; i++)
 			for(int j = i + 1; j < particle_num; j++)
-				if((dist = glm::distance(glm::vec2(particles[i].pos.x * 1024 / 768, particles[i].pos.y), glm::vec2(particles[j].pos.x * 1024 / 768, particles[j].pos.y))) <= max_dist_pp) {
+				if((dist = glm::distance(glm::vec2(particles[i].pos.x * window_width / window_height, particles[i].pos.y), glm::vec2(particles[j].pos.x * window_width / window_height, particles[j].pos.y))) <= max_dist_pp) {
 					vertex_num = 0;
 					g_vertex_buffer_data[vertex_num][0] = particles[i].pos.x;
 					g_vertex_buffer_data[vertex_num][1] = particles[i].pos.y;
