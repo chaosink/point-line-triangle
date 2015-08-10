@@ -18,22 +18,26 @@ GLFWwindow* window;
 
 int between          = 1;    // b
 int circle           = 1;    // c
-int decoration       = 1;    // d
-int fullscreen       = 0;    // f
-char *input          = NULL; // i
+int focus            = 1;    // o
+int triangle         = 1;    // t
+int vertex           = 1;    // v
+
 float max_dist_pm    = 0.4;  // l
 int mouse            = 0;    // m
 int particle_num     = 200;  // n
-int focus            = 1;    // o
-int print            = 0;    // p
 float particle_speed = 1;    // s
-int triangle         = 1;    // t
-int vertex           = 1;    // v
+
+int decoration       = 1;    // d
+int fullscreen       = 0;    // f
 int window_width     = 1024; // w
 int window_height    = 768;  // w
 
-float max_dist_pp          = 0.1;
+char *input          = NULL; // i
+int print            = 0;    // p
 
+
+
+float max_dist_pp          = 0.1;
 float fps                  = 60;
 const int max_particle_num = 100000;
 
@@ -310,23 +314,23 @@ if(input) {
 		glBindBuffer(GL_ARRAY_BUFFER, vertexbuffer);
 		glBufferData(GL_ARRAY_BUFFER, particle_num * sizeof(float) * 2, g_vertex_buffer_data, GL_DYNAMIC_DRAW);
 		glVertexAttribPointer(
-			0,		 // The attribute we want to configure
-			2,		 // size
-			GL_FLOAT,  // type
-			GL_FALSE,  // normalized?
-			0,		 // stride
-			(void*)0 // array buffer offset
+			0,        // The attribute we want to configure
+			2,        // size
+			GL_FLOAT, // type
+			GL_FALSE, // normalized?
+			0,        // stride
+			(void*)0  // array buffer offset
 		);
 
 		glBindBuffer(GL_ARRAY_BUFFER, colorbuffer);
 		glBufferData(GL_ARRAY_BUFFER, particle_num * sizeof(float) * 4, g_color_buffer_data, GL_DYNAMIC_DRAW);
 		glVertexAttribPointer(
-			1,		 // The attribute we want to configure
-			4,		 // size
-			GL_FLOAT,  // type
-			GL_FALSE,  // normalized?
-			0,		 // stride
-			(void*)0 // array buffer offset
+			1,        // The attribute we want to configure
+			4,        // size
+			GL_FLOAT, // type
+			GL_FALSE, // normalized?
+			0,        // stride
+			(void*)0  // array buffer offset
 		);
 	}
 
