@@ -22,6 +22,7 @@ int focus            = 1;    // o
 int triangle         = 1;    // t
 int vertex           = 1;    // v
 
+float max_dist_pp    = 0.1;  // e
 float max_dist_pm    = 0.4;  // l
 int mouse            = 0;    // m
 int particle_num     = 200;  // n
@@ -37,7 +38,6 @@ int print            = 0;    // p
 
 
 
-float max_dist_pp          = 0.1;
 float fps                  = 60;
 const int max_particle_num = 100000;
 
@@ -57,7 +57,7 @@ int digit(int n) {
 
 int main(int argc, char** argv) {
 	int oc; // option character
-	while((oc = getopt(argc, argv, "bcotv l:mn:s: dfw: hi:p")) != -1) {
+	while((oc = getopt(argc, argv, "bcotv e:l:mn:s: dfw: hi:p")) != -1) {
 		switch(oc) {
 			case 'b':
 				between = 0;
@@ -75,6 +75,9 @@ int main(int argc, char** argv) {
 				vertex = 0;
 				break;
 
+			case 'e':
+				max_dist_pp = atof(optarg);
+				break;
 			case 'l':
 				max_dist_pm = atof(optarg);
 				break;
@@ -203,6 +206,7 @@ int main(int argc, char** argv) {
 	GLuint window_widthID_triangle = glGetUniformLocation(programID_triangle, "window_width");
 	GLuint window_heightID_triangle = glGetUniformLocation(programID_triangle, "window_height");
 	GLuint max_dist_pmID_triangle = glGetUniformLocation(programID_triangle, "max_dist_pm");
+	GLuint max_dist_ppID_triangle = glGetUniformLocation(programID_triangle, "max_dist_pp");
 
 	Particle particles[max_particle_num];
 	srand(time(NULL));
@@ -452,6 +456,7 @@ if(input) {
 		glUniform1i(window_widthID_triangle, window_width);
 		glUniform1i(window_heightID_triangle, window_height);
 		glUniform1f(max_dist_pmID_triangle, max_dist_pm_d);
+		glUniform1f(max_dist_ppID_triangle, max_dist_pp);
 		glDrawArrays(GL_LINES, 0, vertex_num);
 	}
 

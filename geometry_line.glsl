@@ -6,7 +6,6 @@ layout(line_strip, max_vertices = 2) out;
 in VertexData {
 	vec4 color;
 } vertexIn[];
-out float alpha;
 out VertexData {
 	vec4 color;
 } vertexOut;
@@ -21,12 +20,12 @@ void main() {
 	float dist = distance(vec4(gl_in[0].gl_Position.x * window_width / window_height, gl_in[0].gl_Position.yzw), vec4(xpos * window_width / window_height, ypos, 0.0, 1.0));
 	if(dist <= max_dist_pm) {
 		gl_Position = gl_in[0].gl_Position;
-		alpha = 1.0 - dist / max_dist_pm;
-		vertexOut.color = vertexIn[0].color;
+		vertexOut.color = vec4(vertexIn[0].color.rgb, vertexIn[0].color.a * (1.0 - dist / max_dist_pm));
+//		vertexOut.color = vec4(vertexIn[0].color.rgb, 1.0 - dist / max_dist_pm);
 		EmitVertex();
 		gl_Position = vec4(xpos, ypos, 0.0, 1.0);
-		alpha = 1.0 - dist / max_dist_pm;
-		vertexOut.color = vertexIn[0].color;
+		vertexOut.color = vec4(vertexIn[0].color.rgb, vertexIn[0].color.a * (1.0 - dist / max_dist_pm));
+//		vertexOut.color = vec4(vertexIn[0].color.rgb, 1.0 - dist / max_dist_pm);
 		EmitVertex();
 		EndPrimitive();
 	}
