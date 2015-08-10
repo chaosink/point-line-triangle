@@ -98,7 +98,7 @@ Default options(with no options):
 - - -
 
 ```Shell
-./point-line-triangle -dfw1920x1080 -n2000 -itest.wav -m -btc
+./point-line-triangle -dfw1920x1080 -n2000 -itest.wav -m -bct
 ```
 
 ![5.png](screenshots/5.png)
@@ -106,7 +106,7 @@ Default options(with no options):
 - - -
 
 ```Shell
-./point-line-triangle -dfw1920x1080 -n100000 -itest.wav -m -btc
+./point-line-triangle -dfw1920x1080 -n100000 -itest.wav -m -bct
 ```
 
 ![6.png](screenshots/6.png)
@@ -114,7 +114,7 @@ Default options(with no options):
 - - -
 
 ```Shell
-./point-line-triangle -dfw1920x1080 -n500 -itest.wav -m -tco
+./point-line-triangle -dfw1920x1080 -n500 -itest.wav -m -cot
 ```
 
 ![7.png](screenshots/7.png)
@@ -122,7 +122,7 @@ Default options(with no options):
 - - -
 
 ```Shell
-./point-line-triangle -dfw1920x1080 -n4000 -m -vbo -l2
+./point-line-triangle -dfw1920x1080 -n4000 -ml2 -bov
 ```
 
 ![8.png](screenshots/8.png)
