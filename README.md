@@ -122,7 +122,9 @@ Default options(with no options):
 - - -
 
 ```Shell
-hacked
+./point-line-triangle -dfw1920x1080 -n4000 -m -vbo -l2
 ```
 
 ![8.png](screenshots/8.png)
+
+![9.png](screenshots/9.png)

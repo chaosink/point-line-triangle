@@ -184,9 +184,9 @@ int main(int argc, char** argv) {
 	glGenVertexArrays(1, &VertexArrayID);
 	glBindVertexArray(VertexArrayID);
 
-	GLuint programID_line = LoadShaders( "vertex.glsl", "fragment_line.glsl", "geometry_line.glsl");
-	GLuint programID_point = LoadShaders( "vertex.glsl", "fragment_point.glsl");
-	GLuint programID_triangle = LoadShaders( "vertex.glsl", "fragment_line.glsl", "geometry_triangle.glsl");
+	GLuint programID_line = LoadShaders( "vertex.glsl", "fragment.glsl", "geometry_line.glsl");
+	GLuint programID_point = LoadShaders( "vertex.glsl", "fragment.glsl");
+	GLuint programID_triangle = LoadShaders( "vertex.glsl", "fragment.glsl", "geometry_triangle.glsl");
 
 	GLuint xposID_line = glGetUniformLocation(programID_line, "xpos");
 	GLuint yposID_line = glGetUniformLocation(programID_line, "ypos");
