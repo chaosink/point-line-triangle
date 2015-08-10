@@ -1,5 +1,5 @@
-# point-line-triangle
-A demo about points, lines, triangles and mouse cursor.
+# point-line-triangle---audio-visualization
+A graphic demo about points, lines, triangles and mouse cursor and audio visualization.
 
 ## Compiling
 ```Shell
@@ -8,26 +8,50 @@ make
 
 ## Usage
 ```
-Usage   : point-line [OPTION] WAV_file
+Usage   : point-line [OPTION]
 
-Options : -a        draw focus automaticly and ignore the mouse cursor
-          -b        don't draw lines between nearby points
-          -c        draw power circle around focus
-          -d        remove window decoration
-          -f        enable fullscreen
-          -h        show this help message and exit
-          -i        set input WAV file
-          -m        don't draw lines between points and mouse cursor
-          -n NUM    set point number
-          -p        print time information in terminal
-          -s SPEED  set particle speed
-          -t        draw triangles around focus
-          -v        don't draw vertexes(points)
-          -w SIZE   set window size(for example, 1920x1080)
+Options :
+    Rendering objects:
+        -b        don't draw lines between nearby points
+        -c        don't draw power circle around focus
+        -o        don't draw lines between points and focus
+        -t        don't draw triangles around focus
+        -v        don't draw vertexes(points)
+    Rendering arguments:
+        -l DIS    set max distance between points and focus
+        -m        control focus by mouse cursor
+        -n NUM    set point number
+        -s SPEED  set point speed
+    Window:
+        -d        remove window decoration
+        -f        enable fullscreen
+        -w SIZE   set window size(for example, 1024x768)
+    Others:
+        -h        show this help message and exit
+        -i WAV    set input WAV file(can be empty)
+        -p        print time information in terminal
 
+Default options(with no options):
+    Rendering objects:
+        b: draw lines between nearby points
+        c: draw power circle around focus
+        o: draw lines between points and focus
+        t: draw triangles around focus
+        v: draw vertexes(points)
+    Rendering arguments:
+        l: max distance between points and focus is 0.4
+        m: focus moves automatically
+        n: point number is 200
+        s: point speed is 1.0
+    Window:
+        d: enable window decoration
+        f: disable fullscreen
+        w: window size is 1024x768
+    Others:
+        h: no help message
+        i: no input WAV file
+        p: don't print time information in terminal
 ```
-
-Without any options, it will run in resolution 1024x768(not fullscreen) with window decoration, drawing 200 points and lines between nearby points as well as lines between points and mouse cursor, not printing time information, and particle speed is 1.0.
 
 ## Dependencies
 [OpenGL - The Industry's Foundation for High Performance Graphics](https://www.opengl.org/)
@@ -42,7 +66,7 @@ Without any options, it will run in resolution 1024x768(not fullscreen) with win
 
 ## Examples & Screenshots
 ```Shell
-./point-line -d -f -w 1920x1080 -n 200
+./point-line-triangle -dfw1920x1080 -n500 -itest.wav
 ```
 
 ![1.png](screenshots/1.png)
@@ -50,7 +74,7 @@ Without any options, it will run in resolution 1024x768(not fullscreen) with win
 - - -
 
 ```Shell
-./point-line -df -w1920x1080 -n1000
+./point-line-triangle -dfw1920x1080 -n500 -itest.wav -b
 ```
 
 ![2.png](screenshots/2.png)
@@ -58,7 +82,7 @@ Without any options, it will run in resolution 1024x768(not fullscreen) with win
 - - -
 
 ```Shell
-./point-line -dfw1920x1080 -n2000 -m
+./point-line-triangle -dfw1920x1080 -n1000 -itest.wav -m -bov
 ```
 
 ![3.png](screenshots/3.png)
@@ -66,7 +90,7 @@ Without any options, it will run in resolution 1024x768(not fullscreen) with win
 - - -
 
 ```Shell
-./point-line -dfw1920x1080 -n4000 -m
+./point-line-triangle -dfw1920x1080 -n2000 -itest.wav -ml2 -bov
 ```
 
 ![4.png](screenshots/4.png)
@@ -74,7 +98,7 @@ Without any options, it will run in resolution 1024x768(not fullscreen) with win
 - - -
 
 ```Shell
-./point-line -d -f -w 1920x1080 -n 200 -b
+./point-line-triangle -dfw1920x1080 -n2000 -itest.wav -m -btc
 ```
 
 ![5.png](screenshots/5.png)
@@ -82,7 +106,7 @@ Without any options, it will run in resolution 1024x768(not fullscreen) with win
 - - -
 
 ```Shell
-./point-line -d -f -w 1920x1080 -n 4000 -b
+./point-line-triangle -dfw1920x1080 -n100000 -itest.wav -m -btc
 ```
 
 ![6.png](screenshots/6.png)
@@ -90,7 +114,7 @@ Without any options, it will run in resolution 1024x768(not fullscreen) with win
 - - -
 
 ```Shell
-./point-line -d -f -w 1920x1080 -n 4000 -b
+./point-line-triangle -dfw1920x1080 -n500 -itest.wav -m -tco
 ```
 
 ![7.png](screenshots/7.png)
@@ -98,7 +122,7 @@ Without any options, it will run in resolution 1024x768(not fullscreen) with win
 - - -
 
 ```Shell
-./point-line -d -f -w 1920x1080 -n 100000 -b -m
+hacked
 ```
 
 ![8.png](screenshots/8.png)

@@ -17,7 +17,7 @@ uniform int window_width;
 uniform int window_height;
 uniform float max_dist_pm;
 
-float triangle_alpha = 0.1;
+float triangle_alpha = 0.2;
 
 void main() {
 	float dist0 = distance( vec4( gl_in[0].gl_Position.x * window_width / window_height, gl_in[0].gl_Position.yzw ), vec4( xpos * window_width / window_height, ypos, 0.0, 1.0 ) );

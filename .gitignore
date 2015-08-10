@@ -27,3 +27,6 @@
 *.out
 *.app
 point-line
+
+# WAV file
+test.wav
