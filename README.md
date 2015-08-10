@@ -1,4 +1,4 @@
-# point-line-triangle---audio-visualization
+# point-line-triangle
 A graphic demo about points, lines, triangles and mouse cursor and audio visualization.
 
 ## Compiling
