@@ -20,7 +20,7 @@ int between          = 1;    // b
 int circle           = 1;    // c
 int decoration       = 1;    // d
 int fullscreen       = 0;    // f
-char *input          = NULL;    // i
+char *input          = NULL; // i
 float max_dist_pm    = 0.4;  // l
 int mouse            = 0;    // m
 int particle_num     = 200;  // n
@@ -53,7 +53,7 @@ int digit(int n) {
 
 int main(int argc, char** argv) {
 	int oc; // option character
-	while( ( oc = getopt(argc, argv, "bcotv l:mn:s: dfw: hi:p")) != -1) {
+	while((oc = getopt(argc, argv, "bcotv l:mn:s: dfw: hi:p")) != -1) {
 		switch(oc) {
 			case 'b':
 				between = 0;
@@ -151,7 +151,7 @@ int main(int argc, char** argv) {
 		}
 	}
 
-	if( !glfwInit()) {
+	if(!glfwInit()) {
 		fprintf(stderr, "Failed to initialize GLFW\n");
 		return -1;
 	}
@@ -171,7 +171,7 @@ int main(int argc, char** argv) {
 	glfwMakeContextCurrent(window);
 
 	glewExperimental = true; // Needed for core profile
-	if ( glewInit() != GLEW_OK) {
+	if (glewInit() != GLEW_OK) {
 		fprintf(stderr, "Failed to initialize GLEW\n");
 		return -1;
 	}
@@ -184,9 +184,9 @@ int main(int argc, char** argv) {
 	glGenVertexArrays(1, &VertexArrayID);
 	glBindVertexArray(VertexArrayID);
 
-	GLuint programID_line = LoadShaders( "vertex.glsl", "fragment.glsl", "geometry_line.glsl");
-	GLuint programID_point = LoadShaders( "vertex.glsl", "fragment.glsl");
-	GLuint programID_triangle = LoadShaders( "vertex.glsl", "fragment.glsl", "geometry_triangle.glsl");
+	GLuint programID_line = LoadShaders("vertex.glsl", "fragment.glsl", "geometry_line.glsl");
+	GLuint programID_point = LoadShaders("vertex.glsl", "fragment.glsl");
+	GLuint programID_triangle = LoadShaders("vertex.glsl", "fragment.glsl", "geometry_triangle.glsl");
 
 	GLuint xposID_line = glGetUniformLocation(programID_line, "xpos");
 	GLuint yposID_line = glGetUniformLocation(programID_line, "ypos");
@@ -203,8 +203,8 @@ int main(int argc, char** argv) {
 	Particle particles[max_particle_num];
 	srand(time(NULL));
 	for(int i = 0; i < particle_num; i++) {
-		particles[i].pos = glm::vec2( ( rand() % 2000 - 1000.0f) / 1000.0f, ( rand() % 2000 - 1000.0f) / 1000.0f);
-		particles[i].speed = glm::vec2( ( rand() % 2000 - 1000.0f) / 1000000.0f * particle_speed, ( rand() % 2000 - 1000.0f) / 1000000.0f * particle_speed);
+		particles[i].pos = glm::vec2((rand() % 2000 - 1000.0f) / 1000.0f, (rand() % 2000 - 1000.0f) / 1000.0f);
+		particles[i].speed = glm::vec2((rand() % 2000 - 1000.0f) / 1000000.0f * particle_speed, (rand() % 2000 - 1000.0f) / 1000000.0f * particle_speed);
 		particles[i].color = glm::vec4(rand() % 2000 / 2000.0f, rand() % 2000 / 2000.0f, rand() % 2000 / 2000.0f, rand() % 2000 / 2000.0f);
 	}
 
@@ -269,20 +269,20 @@ if(input) {
 			if(std::abs(particles[i].pos.x) > 1.0 || std::abs(particles[i].pos.y) > 1.0 || particles[i].speed == glm::vec2(0.0, 0.0)) {
 				switch(rand() % 4) {
 					case 0 :
-						particles[i].pos = glm::vec2( ( rand() % 2000 - 1000.0f) / 1000.0f,-1.0);
-						particles[i].speed = glm::vec2( ( rand() % 2000 - 1000.0f) / 1000000.0f * particle_speed, std::abs( ( rand() % 2000 - 1000.0f) / 1000000.0f * particle_speed));
+						particles[i].pos = glm::vec2((rand() % 2000 - 1000.0f) / 1000.0f,-1.0);
+						particles[i].speed = glm::vec2((rand() % 2000 - 1000.0f) / 1000000.0f * particle_speed, std::abs((rand() % 2000 - 1000.0f) / 1000000.0f * particle_speed));
 						break;
 					case 1 :
-						particles[i].pos = glm::vec2( ( rand() % 2000 - 1000.0f) / 1000.0f, 1.0);
-						particles[i].speed = glm::vec2( ( rand() % 2000 - 1000.0f) / 1000000.0f * particle_speed, -std::abs( ( rand() % 2000 - 1000.0f) / 1000000.0f * particle_speed));
+						particles[i].pos = glm::vec2((rand() % 2000 - 1000.0f) / 1000.0f, 1.0);
+						particles[i].speed = glm::vec2((rand() % 2000 - 1000.0f) / 1000000.0f * particle_speed, -std::abs((rand() % 2000 - 1000.0f) / 1000000.0f * particle_speed));
 						break;
 					case 2 :
-						particles[i].pos = glm::vec2( -1.0, ( rand() % 2000 - 1000.0f) / 1000.0f);
-						particles[i].speed = glm::vec2(  std::abs( ( rand() % 2000 - 1000.0f) / 1000000.0f * particle_speed), ( rand() % 2000 - 1000.0f) / 1000000.0f * particle_speed);
+						particles[i].pos = glm::vec2(-1.0, (rand() % 2000 - 1000.0f) / 1000.0f);
+						particles[i].speed = glm::vec2( std::abs((rand() % 2000 - 1000.0f) / 1000000.0f * particle_speed), (rand() % 2000 - 1000.0f) / 1000000.0f * particle_speed);
 						break;
 					case 3 :
-						particles[i].pos = glm::vec2(  1.0, ( rand() % 2000 - 1000.0f) / 1000.0f);
-						particles[i].speed = glm::vec2( -std::abs( ( rand() % 2000 - 1000.0f) / 1000000.0f * particle_speed), ( rand() % 2000 - 1000.0f) / 1000000.0f * particle_speed);
+						particles[i].pos = glm::vec2( 1.0, (rand() % 2000 - 1000.0f) / 1000.0f);
+						particles[i].speed = glm::vec2(-std::abs((rand() % 2000 - 1000.0f) / 1000000.0f * particle_speed), (rand() % 2000 - 1000.0f) / 1000000.0f * particle_speed);
 						break;
 				}
 				particles[i].color = glm::vec4(rand() % 2000 / 2000.0f, rand() % 2000 / 2000.0f, rand() % 2000 / 2000.0f, rand() % 2000 / 2000.0f);
@@ -315,7 +315,7 @@ if(input) {
 			GL_FLOAT,  // type
 			GL_FALSE,  // normalized?
 			0,		 // stride
-			( void*)0 // array buffer offset
+			(void*)0 // array buffer offset
 		);
 
 		glBindBuffer(GL_ARRAY_BUFFER, colorbuffer);
@@ -326,7 +326,7 @@ if(input) {
 			GL_FLOAT,  // type
 			GL_FALSE,  // normalized?
 			0,		 // stride
-			( void*)0 // array buffer offset
+			(void*)0 // array buffer offset
 		);
 	}
 
@@ -360,19 +360,19 @@ if(input) {
 		float dist;
 		for(int i = 0; i < particle_num; i++)
 			for(int j = i + 1; j < particle_num; j++)
-				if( ( dist = glm::distance(glm::vec2(particles[i].pos.x * 1024 / 768, particles[i].pos.y), glm::vec2(particles[j].pos.x * 1024 / 768, particles[j].pos.y))) <= max_dist_pp) {
+				if((dist = glm::distance(glm::vec2(particles[i].pos.x * 1024 / 768, particles[i].pos.y), glm::vec2(particles[j].pos.x * 1024 / 768, particles[j].pos.y))) <= max_dist_pp) {
 					g_vertex_buffer_data[vertex_num][0] = particles[i].pos.x;
 					g_vertex_buffer_data[vertex_num][1] = particles[i].pos.y;
 					g_color_buffer_data[vertex_num][0] = particles[i].color.r;
 					g_color_buffer_data[vertex_num][1] = particles[i].color.g;
 					g_color_buffer_data[vertex_num][2] = particles[i].color.b;
-					g_color_buffer_data[vertex_num++][3] = ( 1.0 - dist / max_dist_pp);
+					g_color_buffer_data[vertex_num++][3] = (1.0 - dist / max_dist_pp);
 					g_vertex_buffer_data[vertex_num][0] = particles[j].pos.x;
 					g_vertex_buffer_data[vertex_num][1] = particles[j].pos.y;
 					g_color_buffer_data[vertex_num][0] = particles[j].color.r;
 					g_color_buffer_data[vertex_num][1] = particles[j].color.g;
 					g_color_buffer_data[vertex_num][2] = particles[j].color.b;
-					g_color_buffer_data[vertex_num++][3] = ( 1.0 - dist / max_dist_pp);
+					g_color_buffer_data[vertex_num++][3] = (1.0 - dist / max_dist_pp);
 				}
 
 		glBindBuffer(GL_ARRAY_BUFFER, vertexbuffer);
@@ -383,7 +383,7 @@ if(input) {
 			GL_FLOAT,  // type
 			GL_FALSE,  // normalized?
 			0,		 // stride
-			( void*)0 // array buffer offset
+			(void*)0 // array buffer offset
 		);
 		glBindBuffer(GL_ARRAY_BUFFER, colorbuffer);
 		glBufferData(GL_ARRAY_BUFFER, vertex_num * sizeof(float) * 4, g_color_buffer_data, GL_DYNAMIC_DRAW);
@@ -393,7 +393,7 @@ if(input) {
 			GL_FLOAT,  // type
 			GL_FALSE,  // normalized?
 			0,		 // stride
-			( void*)0 // array buffer offset
+			(void*)0 // array buffer offset
 		);
 	}
 
@@ -404,20 +404,20 @@ if(input) {
 
 /*		for(int i = 0; i < particle_num; i++)
 			for(int j = i + 1; j < particle_num; j++)
-				if( ( dist = glm::distance(glm::vec2(particles[i].pos.x * 1024 / 768, particles[i].pos.y), glm::vec2(particles[j].pos.x * 1024 / 768, particles[j].pos.y))) <= max_dist_pp) {
+				if((dist = glm::distance(glm::vec2(particles[i].pos.x * 1024 / 768, particles[i].pos.y), glm::vec2(particles[j].pos.x * 1024 / 768, particles[j].pos.y))) <= max_dist_pp) {
 					vertex_num = 0;
 					g_vertex_buffer_data[vertex_num][0] = particles[i].pos.x;
 					g_vertex_buffer_data[vertex_num][1] = particles[i].pos.y;
 					g_color_buffer_data[vertex_num][0] = particles[i].color.r;
 					g_color_buffer_data[vertex_num][1] = particles[i].color.g;
 					g_color_buffer_data[vertex_num][2] = particles[i].color.b;
-					g_color_buffer_data[vertex_num++][3] = ( 1.0 - dist / max_dist_pp);
+					g_color_buffer_data[vertex_num++][3] = (1.0 - dist / max_dist_pp);
 					g_vertex_buffer_data[vertex_num][0] = particles[j].pos.x;
 					g_vertex_buffer_data[vertex_num][1] = particles[j].pos.y;
 					g_color_buffer_data[vertex_num][0] = particles[j].color.r;
 					g_color_buffer_data[vertex_num][1] = particles[j].color.g;
 					g_color_buffer_data[vertex_num][2] = particles[j].color.b;
-					g_color_buffer_data[vertex_num++][3] = ( 1.0 - dist / max_dist_pp);
+					g_color_buffer_data[vertex_num++][3] = (1.0 - dist / max_dist_pp);
 					glBindBuffer(GL_ARRAY_BUFFER, vertexbuffer);
 					glBufferData(GL_ARRAY_BUFFER, vertex_num * sizeof(float) * 2, g_vertex_buffer_data, GL_DYNAMIC_DRAW);
 					glVertexAttribPointer(
@@ -426,7 +426,7 @@ if(input) {
 						GL_FLOAT,  // type
 						GL_FALSE,  // normalized?
 						0,		 // stride
-						( void*)0 // array buffer offset
+						(void*)0 // array buffer offset
 					);
 					glBindBuffer(GL_ARRAY_BUFFER, colorbuffer);
 					glBufferData(GL_ARRAY_BUFFER, vertex_num * sizeof(float) * 4, g_color_buffer_data, GL_DYNAMIC_DRAW);
@@ -436,7 +436,7 @@ if(input) {
 						GL_FLOAT,  // type
 						GL_FALSE,  // normalized?
 						0,		 // stride
-						( void*)0 // array buffer offset
+						(void*)0 // array buffer offset
 					);
 					glDrawArrays(GL_LINES, 0, vertex_num);
 				}*/
@@ -479,7 +479,7 @@ if(input) {
 			GL_FLOAT,  // type
 			GL_FALSE,  // normalized?
 			0,		 // stride
-			( void*)0 // array buffer offset
+			(void*)0 // array buffer offset
 		);
 		glBindBuffer(GL_ARRAY_BUFFER, colorbuffer);
 		glBufferData(GL_ARRAY_BUFFER, vertex_num * sizeof(float) * 4, g_color_buffer_data, GL_DYNAMIC_DRAW);
@@ -489,7 +489,7 @@ if(input) {
 			GL_FLOAT,  // type
 			GL_FALSE,  // normalized?
 			0,		 // stride
-			( void*)0 // array buffer offset
+			(void*)0 // array buffer offset
 		);
 		glDrawArrays(GL_TRIANGLE_FAN, 0, vertex_num);
 	}
@@ -510,7 +510,7 @@ if(input) {
 //		double time_accurate = data_index / 2.0 / bpf / fps;
 		double time_accurate = (++frame_count) / fps;
 		double time_delta = time_accurate - time_current;
-		if(print) printf( "frame_count:%d time_accurate:%lf time_current:%lf time_delta:%lf\n", frame_count, time_accurate, time_current, time_delta);
+		if(print) printf("frame_count:%d time_accurate:%lf time_current:%lf time_delta:%lf\n", frame_count, time_accurate, time_current, time_delta);
 		time_delta = time_delta > 0 ? time_delta : 0;
 		usleep(time_delta * 1000000);
 		glfwSwapBuffers(window);
