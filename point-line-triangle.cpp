@@ -282,10 +282,10 @@ if(input) {
 						break;
 					case 2 :
 						particles[i].pos = glm::vec2(-1.0, (rand() % 2000 - 1000.0f) / 1000.0f);
-						particles[i].speed = glm::vec2( std::abs((rand() % 2000 - 1000.0f) / 1000000.0f * particle_speed), (rand() % 2000 - 1000.0f) / 1000000.0f * particle_speed);
+						particles[i].speed = glm::vec2(std::abs((rand() % 2000 - 1000.0f) / 1000000.0f * particle_speed), (rand() % 2000 - 1000.0f) / 1000000.0f * particle_speed);
 						break;
 					case 3 :
-						particles[i].pos = glm::vec2( 1.0, (rand() % 2000 - 1000.0f) / 1000.0f);
+						particles[i].pos = glm::vec2(1.0, (rand() % 2000 - 1000.0f) / 1000.0f);
 						particles[i].speed = glm::vec2(-std::abs((rand() % 2000 - 1000.0f) / 1000000.0f * particle_speed), (rand() % 2000 - 1000.0f) / 1000000.0f * particle_speed);
 						break;
 				}
