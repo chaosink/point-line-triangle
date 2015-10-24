@@ -186,6 +186,8 @@ int main(int argc, char** argv) {
 	glfwSetInputMode(window, GLFW_STICKY_KEYS, GL_TRUE);
 
 	glClearColor(0.1, 0.1, 0.1, 1.0);
+	glEnable(GL_BLEND);
+	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
 	GLuint VertexArrayID;
 	glGenVertexArrays(1, &VertexArrayID);
@@ -224,9 +226,6 @@ int main(int argc, char** argv) {
 
 	GLuint colorbuffer;
 	glGenBuffers(1, &colorbuffer);
-
-	glEnable(GL_BLEND);
-	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
 
 
